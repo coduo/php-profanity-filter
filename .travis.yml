@@ -9,4 +9,4 @@ script:
     - composer self-update
     - composer update -n --prefer-source
     - ./bin/phpspec run -f progress
-    - ./bin/behat run -f progress
+    - ./bin/behat -f progress
