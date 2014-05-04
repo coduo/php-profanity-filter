@@ -36,6 +36,6 @@ class ProfanityFilterSpec extends ObjectBehavior
     public function it_collect_text_violations(Sanitizer $sanitizer)
     {
         $this->beConstructedWith($sanitizer, array("fuck", "ass"));
-        $this->getViolations("Man, Fuck it. Ass lorem ipsum dolor. Fuck fuck")->shouldReturn(["fuck", "ass"]);
+        $this->getViolations("Man, Fuck it. Ass lorem ipsum dolor. Fuck fuck")->shouldReturn(array("fuck", "ass"));
     }
 }
