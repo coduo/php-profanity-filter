@@ -56,4 +56,22 @@ class ProfanityFilter
 
         return false;
     }
+
+    /**
+     * @param $text
+     * @return array
+     */
+    public function getViolations($text)
+    {
+        $violations = array();
+
+        foreach ($this->badWords as $badWord) {
+            $pattern = '/\b'.$badWord.'\b/i';
+            if (preg_match($pattern, $text) > 0) {
+                $violations[] = $badWord;
+            }
+        }
+
+        return array_unique($violations);
+    }
 }

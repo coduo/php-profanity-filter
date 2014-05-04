@@ -32,4 +32,10 @@ class ProfanityFilterSpec extends ObjectBehavior
         $this->isProfane("fuck it")->shouldReturn(true);
         $this->isProfane("i like potatoes")->shouldReturn(false);
     }
+
+    public function it_collect_text_violations(Sanitizer $sanitizer)
+    {
+        $this->beConstructedWith($sanitizer, array("fuck", "ass"));
+        $this->getViolations("Man, Fuck it. Ass lorem ipsum dolor. Fuck fuck")->shouldReturn(["fuck", "ass"]);
+    }
 }
